@@ -12,7 +12,7 @@ resource "aws_instance" "ec2" {
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.sg.id]
   tags = {
-    Name = var.component
+    name = var.component
   }
 }
 
@@ -28,7 +28,6 @@ resource "null_resource" "provisioner" {
     inline = [
       "ansible-pull -i localhost, -U https://github.com/sriharitirumala/roboshop-ansible roboshop.yml -e role_name=${var.component}"
     ]
-
   }
 
 }
@@ -54,7 +53,7 @@ resource "aws_security_group" "sg" {
   }
 
   tags = {
-    Name = "${var.component}-${var.env}-sg"
+    name = "${var.component}-${var.env}-sg"
   }
 }
 
