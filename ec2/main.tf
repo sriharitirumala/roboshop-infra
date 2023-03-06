@@ -33,7 +33,7 @@ resource "null_resource" "provisioner" {
 }
 
 resource "aws_security_group" "sg" {
-  Name        = "${var.component}-${var.env}-sg"
+  name        = "${var.component}-${var.env}-sg"
   description = "Allow TLS inbound traffic"
 
 
