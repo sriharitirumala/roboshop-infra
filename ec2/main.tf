@@ -12,7 +12,7 @@ resource "aws_instance" "ec2" {
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.sg.id]
   tags = {
-    name = var.component
+    Name = var.component
   }
 }
 
@@ -33,7 +33,7 @@ resource "null_resource" "provisioner" {
 }
 
 resource "aws_security_group" "sg" {
-  name        = "${var.component}-${var.env}-sg"
+  Name        = "${var.component}-${var.env}-sg"
   description = "Allow TLS inbound traffic"
 
 
@@ -53,14 +53,14 @@ resource "aws_security_group" "sg" {
   }
 
   tags = {
-    name = "${var.component}-${var.env}-sg"
+    Name = "${var.component}-${var.env}-sg"
   }
 }
 
 
 resource "aws_route53_record" "record" {
   zone_id = "Z099374713TEKOU3HRH9T"
-  name    = "${var.component}-dev.devopsb71services.site"
+  Name    = "${var.component}-dev.devopsb71services.site"
   type    = "A"
   ttl     = 30
   records = [aws_instance.ec2.private_ip]
