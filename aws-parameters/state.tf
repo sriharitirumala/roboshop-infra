@@ -1,16 +1,12 @@
 terraform {
-  backend "s3" {
-    bucket = "terraform-b71"
-    key    = "05-s3-state/terraform.tfstate"
-    region = "us-east-1"
-  }
+  backend "s3" { }
 }
 
-resource "aws_instance" "ec2" {
-  ami                    = "ami-0a017d8ceb274537d"
-  instance_type          = "t3.micro"
-  vpc_security_group_ids = ["sg-0f914773417860a28"]
-  tags = {
-    Name = "demo"
-  }
+resource "aws_ssm_parameter" "parameters" {
+  count = length(var.parameters)
+  name  = var.parameters[count.index].name
+  type  = var.parameters[count.index].type
+  value = var.parameters[count.index].value
 }
+
+variable "parameters" { }
