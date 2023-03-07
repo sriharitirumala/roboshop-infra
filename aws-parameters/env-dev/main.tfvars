@@ -1,3 +1,3 @@
 parameters =[
-  { name: "test" , value = " hello", type: "string"}
+  { name: "test" , value = " hello", type: "String"}
 ]
