@@ -1,1 +1,3 @@
-variable "instances" {}
+variable "instances" {
+
+}
