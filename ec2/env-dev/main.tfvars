@@ -3,5 +3,4 @@ instances = {
     name = "backend"
     type = "t3.micro"
   }
-
-env = "dev"}
+}
