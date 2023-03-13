@@ -1,3 +1,3 @@
 parameters = [
-  { name: "test1", value = "Hello Universe", type = "string"}
+  { name: "dev.frontend.catalogue_URL", value = "http://catalogue-dev.devopsb71services.site:8080/", type = "string"}
 ]
