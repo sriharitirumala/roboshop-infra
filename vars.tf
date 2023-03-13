@@ -4,3 +4,5 @@ variable "instances" {
       name = "backend"
       type = "t3.micro"
     }
+  }
+}
