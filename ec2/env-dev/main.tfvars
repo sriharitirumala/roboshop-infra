@@ -46,5 +46,3 @@ instances = {
     monitor = true
   }
 }
-
-env = "dev"
