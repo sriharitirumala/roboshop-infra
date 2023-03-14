@@ -1,6 +1,8 @@
 instances = {
-  backend = {
-    name = "backend"
+  frontend = {
+    name = "frontend"
     type = "t3.micro"
   }
 }
+
+env = "dev"
