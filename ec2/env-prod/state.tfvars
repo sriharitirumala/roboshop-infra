@@ -1,3 +1,3 @@
-bucket = "terraformb71services.site"
+bucket = "sriharibucket"
 key    = "prod/infra/terraform.tfstate"
 region = "us-east-1"
