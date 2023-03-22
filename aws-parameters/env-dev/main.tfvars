@@ -21,7 +21,7 @@ parameters = [
   { name = "dev.payment.amqp_host", value = "rabbitmq-dev.devopsb71services.site", type = "String" },
 
   { name = "dev.catalogue.mongo", value = "true", type = "String" },
-  { name = "dev.catalogue.mongo_url", value = "mongodb://mongodb-dev.devopsb71services.site:27017/users", type = "String" },
+  { name = "dev.catalogue.mongo_url", value = "mongodb://mongodb-dev.devopsb71services.site:27017/catalogue", type = "String" },
 
   { name = "dev.cart.redis_host", value = "redis-dev.devopsb71services.site", type = "String" },
   { name = "dev.cart.catalogue_host", value = "catalogue-dev.devopsb71services.site", type = "String" },
