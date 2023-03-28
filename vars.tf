@@ -6,4 +6,3 @@ variable "vpc" {}
 variable "docdb" {}
 variable "rds" {}
 variable "elasticache" {}
-variable "subnet_ids" {}
