@@ -43,6 +43,4 @@ module "rds" {
 
 }
 
-output "vpc" {
-  value = local.rds_subnet_ids
-}
+
