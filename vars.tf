@@ -6,3 +6,4 @@ variable "vpc" {}
 variable "docdb" {}
 variable "rds" {}
 variable "elasticache" {}
+variable "rabbitmq" {}
