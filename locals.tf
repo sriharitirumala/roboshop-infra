@@ -1,4 +1,4 @@
 locals {
   ## Private Subnets
-  private_subnet_ids = [for k, v in module.vpc["main"].private_subnets : v.id]
+  private_subnets_ids = [for k, v in module.vpc["main"].private_subnets : v.id]
 }
