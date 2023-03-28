@@ -1,6 +1,6 @@
 git:
-	#git pull
-	#rm -rf .terraform
+	git pull origin main
+	rm -rf .terraform
 dev-apply: git
 	cd aws-parameters
 	terraform init -backend-config=env-dev/state.tfvars
