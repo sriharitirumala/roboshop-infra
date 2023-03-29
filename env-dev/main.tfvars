@@ -1,4 +1,6 @@
 env = "dev"
+bastion_cidr = ["172.31.1.186/32"]
+
 
 ## VPC Modules to create public and private subnets multiple availability zones
 vpc = {

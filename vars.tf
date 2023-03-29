@@ -10,5 +10,5 @@ variable "rabbitmq" {}
 variable "alb" {}
 variable "app" {}
 variable "vpc_id" {}
-
+variable "bastion_cidr" {}
 
