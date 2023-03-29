@@ -9,3 +9,5 @@ locals {
     public = tolist([module.vpc["main"].public_subnets["public-az1"].id, module.vpc["main"].public_subnets["public-az2"].id])
   }
 
+}
+
