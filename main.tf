@@ -80,7 +80,7 @@ module "alb" {
   name               = each.value["name"]
   internal           = each.value["internal"]
   load_balancer_type = each.value["load_balancer_type"]
-  subnets            = lookup(local.subnet_ids, each.value["subnet_name"],null )
+  subnets            = lookup(local.subnet_ids, each.value["subnet_name"], null)
 }
 
 
@@ -96,7 +96,7 @@ module "app" {
   desired_capacity   = each.value["desired_capacity"]
   max_size           = each.value["max_size"]
   min_size           = each.value["min_size"]
-  subnets            = lookup(local.subnet_ids, each.value["subnet_name"],null )
+  subnets            = lookup(local.subnet_ids, each.value["subnet_name"], null)
 }
 
 
