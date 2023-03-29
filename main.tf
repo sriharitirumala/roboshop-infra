@@ -18,7 +18,7 @@ module "docdb" {
   env                             = var.env
   tags                            = var.tags
 
-  subnet_ids                      = local.db_subnet_ids
+  subnet_ids                      = local.subnet_ids ["db"]
   for_each                        = var.docdb
   engine                          = each.value ["engine"]
   engine_version                  = each.value ["engine_version"]
@@ -34,7 +34,7 @@ module "rds" {
   env                             = var.env
   tags                            = var.tags
 
-  subnet_ids                      = local.db_subnet_ids
+  subnet_ids                      = local.subnet_ids ["db"]
   for_each                        = var.rds
   engine                          = each.value ["engine"]
   engine_version                  = each.value ["engine_version"]
@@ -50,7 +50,7 @@ module "elasticache" {
   env                             = var.env
   tags                            = var.tags
 
-  subnet_ids                      = local.db_subnet_ids
+  subnet_ids                      = local.subnet_ids ["db"]
   for_each                        = var.elasticache
   engine                          = each.value ["engine"]
   engine_version                  = each.value ["engine_version"]
@@ -63,9 +63,10 @@ module "rabbitmq" {
   env                             = var.env
   tags                            = var.tags
 
-  subnet_ids                      = local.db_subnet_ids
+  subnet_ids                      = local.subnet_ids ["db"]
   for_each                        = var.rabbitmq
   instance_type                   = each.value ["instance_type"]
+
 
 }
 
