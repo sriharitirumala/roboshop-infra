@@ -1,5 +1,6 @@
 env = "dev"
 
+## VPC Modules to create public and private subnets multiple availability zones
 vpc = {
   main = {
     vpc_cidr = "10.0.0.0/16"
@@ -51,6 +52,8 @@ vpc = {
   }
 }
 
+
+## creating the docdb source across two db route tables using database cluster
 docdb = {
   main = {
     engine                  = "docdb"
@@ -63,6 +66,8 @@ docdb = {
   }
 }
 
+
+## creating the rds source across two db route tables using aurora-mysql db cluster
 rds = {
   main = {
     engine                  = "aurora-mysql"
@@ -74,6 +79,9 @@ rds = {
   }
 }
 
+
+## Elastic-Cache is a aws web service that makes it easy to set-up, manage and scale a distributed cache env in cloud
+## This is also used across two db route tables using cluster
 elasticache = {
   main = {
     engine = "redis"
@@ -83,10 +91,28 @@ elasticache = {
   }
 }
 
+## Rabbitmq DB is created in a single node using db but not db cluster.
 
 rabbitmq = {
   main = {
     instance_type = "t3.micro"
+  }
+}
+
+
+## Application Load-Balancers across two availability zones
+alb = {
+  public = {
+    subnet_name = "web"
+    name        = "public"
+    internal    = false
+    load_balancer_type        = "application"
+  }
+  private = {
+    subnet_name = "app"
+    name        = "private"
+    internal    = true
+    load_balancer_type        = "application"
   }
 }
 

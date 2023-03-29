@@ -5,22 +5,22 @@ module "vpc" {
   default_route_table   = var.default_route_table
   default_vpc_id        = var.default_vpc_id
 
-  for_each        = var.vpc
-  vpc_cidr        = each.value ["vpc_cidr"]
-  public_subnets  = each.value ["public_subnets"]
-  private_subnets = each.value ["private_subnets"]
+  for_each              = var.vpc
+  vpc_cidr              = each.value ["vpc_cidr"]
+  public_subnets        = each.value ["public_subnets"]
+  private_subnets       = each.value ["private_subnets"]
 }
 
 
 
 module "docdb" {
-  source               = "git::https://github.com/sriharitirumala/tf-module-docdb.git"
-  env                  = var.env
-  tags                 = var.tags
+  source                          = "git::https://github.com/sriharitirumala/tf-module-docdb.git"
+  env                             = var.env
+  tags                            = var.tags
 
   subnet_ids                      = local.db_subnet_ids
-  for_each       = var.docdb
-  engine         = each.value ["engine"]
+  for_each                        = var.docdb
+  engine                          = each.value ["engine"]
   engine_version                  = each.value ["engine_version"]
   backup_retention_period         = each.value ["backup_retention_period"]
   preferred_backup_window         = each.value ["preferred_backup_window"]
@@ -30,9 +30,9 @@ module "docdb" {
 }
 
 module "rds" {
-  source               = "git::https://github.com/sriharitirumala/tf-module-rds.git"
-  env                  = var.env
-  tags                 = var.tags
+  source                          = "git::https://github.com/sriharitirumala/tf-module-rds.git"
+  env                             = var.env
+  tags                            = var.tags
 
   subnet_ids                      = local.db_subnet_ids
   for_each                        = var.rds
@@ -46,9 +46,9 @@ module "rds" {
 
 
 module "elasticache" {
-  source               = "git::https://github.com/sriharitirumala/tf-module-elasticache.git"
-  env                  = var.env
-  tags                 = var.tags
+  source                          = "git::https://github.com/sriharitirumala/tf-module-elasticache.git"
+  env                             = var.env
+  tags                            = var.tags
 
   subnet_ids                      = local.db_subnet_ids
   for_each                        = var.elasticache
@@ -59,12 +59,24 @@ module "elasticache" {
 }
 
 module "rabbitmq" {
-  source               = "git::https://github.com/sriharitirumala/tf-module-rabbitmq.git"
-  env                  = var.env
-  tags                 = var.tags
+  source                          = "git::https://github.com/sriharitirumala/tf-module-rabbitmq.git"
+  env                             = var.env
+  tags                            = var.tags
 
   subnet_ids                      = local.db_subnet_ids
   for_each                        = var.rabbitmq
   instance_type                   = each.value ["instance_type"]
 
 }
+
+
+module "alb" {
+  source                          = "git::https://github.com/sriharitirumala/tf-module-alb.git"
+  env                             = var.env
+  tags                            = var.tags
+
+  for_each = var.alb
+  name= each.value["name"]
+  internal = each.value["internal"]
+  load_balancer_type = each.value["load_balancer_type"]
+  subnets = lookup(local.subnet_ids,each_value["subnet_name"], null )
