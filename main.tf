@@ -18,7 +18,7 @@ module "docdb" {
   env                             = var.env
   tags                            = var.tags
 
-  subnet_ids                      = local.subnet_ids
+  subnet_ids                      = local.db_subnet_ids
   for_each                        = var.docdb
   engine                          = each.value ["engine"]
   engine_version                  = each.value ["engine_version"]
@@ -34,7 +34,7 @@ module "rds" {
   env                             = var.env
   tags                            = var.tags
 
-  subnet_ids                      = local.subnet_ids
+  subnet_ids                      = local.db_subnet_ids
   for_each                        = var.rds
   engine                          = each.value ["engine"]
   engine_version                  = each.value ["engine_version"]
@@ -50,7 +50,7 @@ module "elasticache" {
   env                             = var.env
   tags                            = var.tags
 
-  subnet_ids                      = local.subnet_ids
+  subnet_ids                      = local.db_subnet_ids
   for_each                        = var.elasticache
   engine                          = each.value ["engine"]
   engine_version                  = each.value ["engine_version"]
@@ -63,7 +63,7 @@ module "rabbitmq" {
   env                             = var.env
   tags                            = var.tags
 
-  subnet_ids                      = local.subnet_ids
+  subnet_ids                      = local.db_subnet_ids
   for_each                        = var.rabbitmq
   instance_type                   = each.value ["instance_type"]
 
@@ -74,11 +74,12 @@ module "alb" {
   source = "git::https://github.com/sriharitirumala/tf-module-alb.git"
   env    = var.env
   tags   = var.tags
-
+  vpc_id = module.vpc["main"].vpc_id
   for_each           = var.alb
   name               = each.value["name"]
   internal           = each.value["internal"]
   load_balancer_type = each.value["load_balancer_type"]
   subnets            = lookup(local.subnet_ids, each.value["subnet_name"],null )
+  allow_cidr         = each.value["allow_cidr"]
 }
 
