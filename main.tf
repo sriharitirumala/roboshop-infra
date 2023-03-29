@@ -75,7 +75,7 @@ module "alb" {
   source = "git::https://github.com/sriharitirumala/tf-module-alb.git"
   env    = var.env
   tags   = var.tags
-  vpc_id = module.vpc["main"].vpc_id
+
   for_each           = var.alb
   name               = each.value["name"]
   internal           = each.value["internal"]
