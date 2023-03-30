@@ -10,7 +10,7 @@ variable "rabbitmq" {}
 variable "alb" {}
 variable "app" {}
 variable "bastion_cidr" {}
-variable "allow_up_to" {}
+variable "allow_app_to" {}
 variable "port" {}
 
 
