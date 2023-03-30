@@ -11,6 +11,6 @@ variable "alb" {}
 variable "app" {}
 variable "bastion_cidr" {}
 variable "allow_app_to" {}
-variable "port" {}
+
 
 
