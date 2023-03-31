@@ -1,5 +1,6 @@
 env = "dev"
 bastion_cidr = ["172.31.1.186/32"]
+dns_domain = "devopsb71services.site"
 
 
 ## VPC Modules to create public and private subnets multiple availability zones
@@ -130,6 +131,7 @@ app = {
     subnet_name        = "app"
     port               = 8080
     allow_app_to       = "app"
+    alb                = "private"
   }
 
   cart = {
@@ -141,7 +143,9 @@ app = {
     subnet_name      = "app"
     port               = 8080
     allow_app_to       = "app"
+    alb                = "private"
   }
+
   user = {
     component        = "user"
     instance_type    = "t3.micro"
@@ -151,7 +155,9 @@ app = {
     subnet_name      = "app"
     port               = 8080
     allow_app_to       = "app"
+    alb                = "private"
   }
+
   shipping = {
     component        = "shipping"
     instance_type    = "t3.micro"
@@ -161,7 +167,9 @@ app = {
     subnet_name      = "app"
     port               = 8080
     allow_app_to       = "app"
+    alb                = "private"
   }
+
   payment = {
     component        = "payment"
     instance_type    = "t3.micro"
@@ -171,7 +179,9 @@ app = {
     subnet_name      = "app"
     port               = 8080
     allow_app_to       = "app"
+    alb                = "private"
   }
+
   frontend = {
     component        = "frontend"
     instance_type    = "t3.micro"
@@ -181,6 +191,7 @@ app = {
     subnet_name      = "web"
     port             = 80
     allow_app_to     = "pubilc"
+    alb              = "public"
   }
 }
 
