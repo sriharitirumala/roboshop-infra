@@ -179,8 +179,8 @@ app = {
     max_size         = 4
     min_size         = 1
     subnet_name      = "web"
-    port               = 80
-    allow_app_to       = "pubilc"
+    port             = 80
+    allow_app_to     = "pubilc"
   }
 }
 
