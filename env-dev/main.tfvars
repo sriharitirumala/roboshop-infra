@@ -195,7 +195,7 @@ app = {
     min_size         = 1
     subnet_name      = "web"
     port             = 80
-    allow_app_to     = "pubilc"
+    allow_app_to     = "public"
     alb              = "public"
     listener_priority  = 10
   }
