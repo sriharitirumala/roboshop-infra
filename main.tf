@@ -117,8 +117,8 @@ module "app" {
 
 
 
-output "app" {
-  value = module.app
+output "elb" {
+  value = module.elasticache
 }
 
 
