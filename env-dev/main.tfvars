@@ -162,6 +162,7 @@ app = {
     allow_app_to       = "app"
     alb                = "private"
     listener_priority  = 12
+    parameters         = []
   }
 
   shipping = {
@@ -175,6 +176,8 @@ app = {
     allow_app_to       = "app"
     alb                = "private"
     listener_priority  = 13
+    parameters         = []
+
   }
 
   payment = {
@@ -188,6 +191,8 @@ app = {
     allow_app_to       = "app"
     alb                = "private"
     listener_priority  = 14
+    parameters         = []
+
   }
 
   frontend = {
@@ -201,6 +206,8 @@ app = {
     allow_app_to     = "public"
     alb              = "public"
     listener_priority  = 10
+    parameters         = []
+
   }
 }
 
