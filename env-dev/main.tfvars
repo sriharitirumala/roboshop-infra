@@ -165,7 +165,7 @@ app = {
     allow_app_to       = "app"
     alb                = "private"
     listener_priority  = 12
-    parameters         = []
+    parameters         = [ "docdb", "elasticache"]
   }
 
   shipping = {
@@ -179,7 +179,7 @@ app = {
     allow_app_to       = "app"
     alb                = "private"
     listener_priority  = 13
-    parameters         = []
+    parameters         = ["rds"]
 
   }
 
