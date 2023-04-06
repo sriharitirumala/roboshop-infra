@@ -134,6 +134,7 @@ app = {
     allow_app_to       = "app"
     alb                = "private"
     listener_priority  = 10
+    parameters         = ["docdb"]
   }
 
   cart = {
@@ -147,6 +148,7 @@ app = {
     allow_app_to       = "app"
     alb                = "private"
     listener_priority  = 11
+    parameters         = ["elasticache"]
   }
 
   user = {
