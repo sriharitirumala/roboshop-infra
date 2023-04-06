@@ -18,8 +18,8 @@ module "docdb" {
   env                             = var.env
   tags                            = var.tags
 
-  subnet_ids                      = local.subnet_ids
-  vpc_id             = module.vpc["main"].vpc_id
+  subnet_ids                      = local.db_subnet_ids
+  vpc_id                          = module.vpc["main"].vpc_id
 
   for_each                        = var.docdb
   engine                          = each.value ["engine"]
@@ -37,7 +37,7 @@ module "rds" {
   env                             = var.env
   tags                            = var.tags
 
-  subnet_ids                      = local.subnet_ids
+  subnet_ids                      = local.db_subnet_ids
   vpc_id                          = module.vpc["main"].vpc_id
 
   for_each                        = var.rds
@@ -56,7 +56,7 @@ module "elasticache" {
   env                             = var.env
   tags                            = var.tags
 
-  subnet_ids                      = local.subnet_ids
+  subnet_ids                      = local.db_subnet_ids
   vpc_id                          = module.vpc["main"].vpc_id
 
   for_each                        = var.elasticache
