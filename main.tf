@@ -18,7 +18,7 @@ module "docdb" {
   env                             = var.env
   tags                            = var.tags
 
-  subnet_ids                      = local.subnet_ids ["db"]
+  subnet_ids                      = local.subnet_ids
   vpc_id             = module.vpc["main"].vpc_id
 
   for_each                        = var.docdb
@@ -37,8 +37,9 @@ module "rds" {
   env                             = var.env
   tags                            = var.tags
 
-  subnet_ids                      = local.subnet_ids ["db"]
+  subnet_ids                      = local.subnet_ids
   vpc_id                          = module.vpc["main"].vpc_id
+
   for_each                        = var.rds
   engine                          = each.value ["engine"]
   engine_version                  = each.value ["engine_version"]
@@ -55,8 +56,8 @@ module "elasticache" {
   env                             = var.env
   tags                            = var.tags
 
-  subnet_ids                      = local.subnet_ids ["db"]
-  vpc_id             = module.vpc["main"].vpc_id
+  subnet_ids                      = local.subnet_ids
+  vpc_id                          = module.vpc["main"].vpc_id
 
   for_each                        = var.elasticache
   engine                          = each.value ["engine"]
@@ -67,14 +68,18 @@ module "elasticache" {
 }
 
 module "rabbitmq" {
-  source                          = "git::https://github.com/sriharitirumala/tf-module-rabbitmq.git"
-  env                             = var.env
-  tags                            = var.tags
+  source = "git::https://github.com/sriharitirumala/tf-module-rabbitmq.git"
+  env          = var.env
+  tags         = var.tags
+  bastion_cidr = var.bastion_cidr
+  dns_domain   = var.dns_domain
 
-  subnet_ids                      = local.subnet_ids ["db"]
-  for_each                        = var.rabbitmq
-  instance_type                   = each.value ["instance_type"]
+  subnet_ids = local.db_subnet_ids
+  vpc_id     = module.vpc["main"].vpc_id
 
+  for_each      = var.rabbitmq
+  instance_type = each.value["instance_type"]
+  allow_subnets = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
 
 }
 
