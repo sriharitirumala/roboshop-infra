@@ -13,10 +13,10 @@ parameters = [
   { name = "dev.shipping.db_host", value = "mysql-dev.devopsb71services.site", type = "String" },
 
   { name = "dev.payment.cart_host", value = "cart-dev.devopsb71services.site", type = "String" },
-  { name = "dev.payment.cart_port", value = "8080", type = "String" },
+  { name = "dev.payment.cart_port", value = "80", type = "String" },
 
   { name = "dev.payment.user_host", value = "user-dev.devopsb71services.site", type = "String" },
-  { name = "dev.payment.user_port", value = "8080", type = "String" },
+  { name = "dev.payment.user_port", value = "80", type = "String" },
 
   { name = "dev.payment.amqp_host", value = "rabbitmq-dev.devopsb71services.site", type = "String" },
 
