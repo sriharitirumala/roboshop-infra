@@ -12,5 +12,19 @@ resource "aws_ssm_parameter" "secret" {
   value = var.secrets[count.index].value
 }
 
+resource "aws_ssm_parameter" "jenkins_user" {
+  name  = "jenkins.user"
+  type  = "string"
+  value = "admin"
+}
+
+resource "aws_ssm_parameter" "jenkins_pass" {
+  name  = "jenkins.pass"
+  type  = "SecureString"
+  value = "admin123"
+}
+
+
+
 variable "parameters" {}
 variable "secrets" {}
