@@ -16,9 +16,6 @@ dev-destroy:
 
 
 prod-apply: git
-	cd aws-parameters; terraform init -backend-config=env-prod/state.tfvars
-	cd aws-parameters; terraform apply -auto-approve -var-file=env-prod/main.tfvars
-
 	terraform init -migrate-state
 	terraform init -reconfigure
 	terraform init -backend-config=env-prod/state.tfvars
