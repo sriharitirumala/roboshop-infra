@@ -68,14 +68,15 @@ module "elasticache" {
 }
 
 module "rabbitmq" {
-  source = "git::https://github.com/sriharitirumala/tf-module-rabbitmq.git"
-  env          = var.env
-  tags         = var.tags
-  bastion_cidr = var.bastion_cidr
-  dns_domain   = var.dns_domain
+  depends_on    = [module.vpc]
+  source        = "git::https://github.com/sriharitirumala/tf-module-rabbitmq.git"
+  env           = var.env
+  tags          = var.tags
+  bastion_cidr  = var.bastion_cidr
+  dns_domain    = var.dns_domain
 
-  subnet_ids = local.db_subnet_ids
-  vpc_id     = module.vpc["main"].vpc_id
+  subnet_ids    = local.db_subnet_ids
+  vpc_id        = module.vpc["main"].vpc_id
 
   for_each      = var.rabbitmq
   instance_type = each.value["instance_type"]
