@@ -25,7 +25,16 @@ parameters = [
 
   { name = "prod.cart.redis_host", value = "redis-prod.devopsb71services.site", type = "String" },
   { name = "prod.cart.catalogue_host", value = "catalogue-prod.devopsb71services.site", type = "String" },
-  { name = "prod.cart.catalogue_port", value = "80", type = "String" }
+  { name = "prod.cart.catalogue_port", value = "80", type = "String" },
+
+
+  { name = "prod.frontend.app_version", value = "1.0.0", type = "String" },
+  { name = "prod.catalogue.app_version", value = "1.0.0", type = "String" },
+  { name = "prod.cart.app_version", value = "1.0.0", type = "String" },
+  { name = "prod.user.app_version", value = "1.0.0", type = "String" },
+  { name = "prod.payment.app_version", value = "1.0.0", type = "String" },
+  { name = "prod.shipping.app_version", value = "1.0.0", type = "String" }
+
 ]
 
 ### THIS IS NOT GOING TO BE THE PRACTICE IN COMPANIES, WE SHOULD NOT KEEP PASSWORDS IN GIT REPOS ####
