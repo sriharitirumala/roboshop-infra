@@ -111,6 +111,7 @@ module "app" {
   bastion_cidr = var.bastion_cidr
   monitoring_nodes = var.monitoring_nodes
   dns_domain   = var.dns_domain
+  monitoring_tags= yes
 
   vpc_id             = module.vpc["main"].vpc_id
 
