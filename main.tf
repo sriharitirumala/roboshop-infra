@@ -186,7 +186,7 @@ module "minikube" {
   aws_instance_type   = "t3.medium"
   ssh_public_key      = "~/.ssh/id_rsa.pub"
   aws_subnet_id       = lookup(local.subnet_ids, "public", null)[0]
-  hosted_zone         = "devopsb71services.site"
+  hosted_zone         = "Z099374713TEKOU3HRH9T"
   hosted_zone_private = false
   ami_image_id        = "ami-02c073b6f8c9e1803"
   tags = {
