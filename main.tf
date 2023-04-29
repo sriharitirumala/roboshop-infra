@@ -178,7 +178,6 @@ module "vpc" {
 #}
 
 
-
 module "minikube" {
   source = "github.com/scholzj/terraform-aws-minikube"
   aws_region          = "us-east-1"
