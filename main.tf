@@ -128,11 +128,7 @@ module "app" {
 
 }
 
-
-
-output "elb" {
- value = module.elasticache
-}
+ 
 
 ###### Load Runner
 
@@ -214,8 +210,3 @@ module "eks" {
   MAX_SIZE           = 2
   MIN_SIZE           = 2
 }
-
-
-
-
-
