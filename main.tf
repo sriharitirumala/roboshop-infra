@@ -137,7 +137,7 @@ module "app" {
 #  ami                    = data.aws_ami.ami.id
 #  instance_type          = "t3.medium"
 #  wait_for_fulfillment   = true
-#  vpc_security_group_ids = ["sg-0f914773417860a28"]
+#  vpc_security_group_ids = ["sg-0283b29d1ec816853"]
 
 #  tags = merge(
 #    var.tags,
